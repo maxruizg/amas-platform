@@ -1,0 +1,70 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Car {
+  id          String   @id @default(cuid())
+  brand       String
+  model       String
+  year        Int
+  price       Float
+  mileage     Int
+  fuelType    String
+  transmission String
+  color       String
+  description String
+  status      String   @default("available") // available, sold, reserved
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  images      CarImage[]
+}
+
+model CarImage {
+  id        String   @id @default(cuid())
+  url       String
+  alt       String?
+  isPrimary Boolean  @default(false)
+  order     Int      @default(0)
+  carId     String
+  car       Car      @relation(fields: [carId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+}
+
+model SiteImage {
+  id        String   @id @default(cuid())
+  section   String   // hero, about, services, etc.
+  url       String
+  alt       String?
+  title     String?
+  order     Int      @default(0)
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  message   String
+  carId     String?
+  status    String   @default("new") // new, read, responded
+  createdAt DateTime @default(now())
+}
