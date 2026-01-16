@@ -191,7 +191,7 @@ export default function Servicios() {
                             index === 0
                               ? "1583121274602-3e2820c69888"
                               : index === 1
-                              ? "1560472354-8e0b4d0b5f0c"
+                              ? "1554224155-6726b3ff858f"
                               : index === 2
                               ? "1549317661-bd32c8ce0db2"
                               : "1618843479313-40f8afb4b4d8"
