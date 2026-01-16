@@ -203,7 +203,7 @@ export const mockSiteImages = [
 export const mockUser = {
   id: "admin1",
   email: "admin@autosamsa.com.mx",
-  password: "$2a$10$K7L1OJ45/4Y2nIvhRVpCe.FSmhDdWoXehVzJptJ/op0lSsvqNu/1u", // admin123
+  password: "$2b$10$DonzYRROWiBoV.dDapDuTuvLc11wtVvPcDqWhb4z5p5Nj.Ju.WwvO", // admin123
   name: "Administrador",
   role: "admin",
   createdAt: new Date(),

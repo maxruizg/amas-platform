@@ -91,14 +91,14 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                 Email
               </label>
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400 z-10" />
                 <input
                   type="email"
                   id="email"
                   name="email"
                   required
                   placeholder="admin@autosamsa.com.mx"
-                  className="w-full pl-12"
+                  className="w-full !pl-12 pr-4 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
                 />
               </div>
             </div>
@@ -111,14 +111,14 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                 Contraseña
               </label>
               <div className="relative">
-                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400" />
+                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400 z-10" />
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
                   name="password"
                   required
                   placeholder="••••••••"
-                  className="w-full pl-12 pr-12"
+                  className="w-full !pl-12 !pr-12 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
                 />
                 <button
                   type="button"
