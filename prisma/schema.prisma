@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = env("DATABASE_URL")
+  url      = "file:./dev.db"
 }
 
 model User {
@@ -28,7 +28,7 @@ model Car {
   transmission String
   color       String
   description String
-  status      String   @default("available") // available, sold, reserved
+  status      String   @default("available")
   featured    Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -48,7 +48,7 @@ model CarImage {
 
 model SiteImage {
   id        String   @id @default(cuid())
-  section   String   // hero, about, services, etc.
+  section   String
   url       String
   alt       String?
   title     String?
@@ -65,6 +65,6 @@ model ContactSubmission {
   phone     String?
   message   String
   carId     String?
-  status    String   @default("new") // new, read, responded
+  status    String   @default("new")
   createdAt DateTime @default(now())
 }
