@@ -136,40 +136,40 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
       </section>
 
       {/* Contact Section */}
-      <section className="py-24">
+      <section className="py-24 bg-white dark:bg-navy-950">
         <div className="container-custom">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <AnimatedSection>
-              <div className="bg-white rounded-2xl p-8 shadow-xl shadow-navy-900/10 border border-navy-100">
+              <div className="bg-white dark:bg-navy-900 rounded-2xl p-8 shadow-xl shadow-navy-900/10 dark:shadow-navy-950/50 border border-navy-100 dark:border-navy-800">
                 {actionData?.success ? (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="text-center py-12"
                   >
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                      <CheckCircle className="w-10 h-10 text-green-600" />
+                    <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="w-10 h-10 text-green-600 dark:text-green-400" />
                     </div>
-                    <h3 className="text-2xl font-bold text-navy-900 mb-2">
+                    <h3 className="text-2xl font-bold text-navy-900 dark:text-white mb-2">
                       ¡Mensaje enviado!
                     </h3>
-                    <p className="text-navy-600">
+                    <p className="text-navy-600 dark:text-navy-300">
                       Gracias por contactarnos. Te responderemos pronto.
                     </p>
                   </motion.div>
                 ) : (
                   <>
-                    <h2 className="heading-sm text-navy-900 mb-6">
+                    <h2 className="heading-sm text-navy-900 dark:text-white mb-6">
                       Envíanos un mensaje
                     </h2>
 
                     {car && (
-                      <div className="bg-navy-50 rounded-xl p-4 mb-6">
-                        <p className="text-sm text-navy-500">
+                      <div className="bg-navy-50 dark:bg-navy-800 rounded-xl p-4 mb-6">
+                        <p className="text-sm text-navy-500 dark:text-navy-400">
                           Consulta sobre:
                         </p>
-                        <p className="font-semibold text-navy-900">
+                        <p className="font-semibold text-navy-900 dark:text-white">
                           {car.brand} {car.model} {car.year}
                         </p>
                       </div>
@@ -183,7 +183,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                       <div>
                         <label
                           htmlFor="name"
-                          className="block text-sm font-medium text-navy-700 mb-2"
+                          className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
                         >
                           Nombre completo *
                         </label>
@@ -193,10 +193,10 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                           name="name"
                           required
                           placeholder="Tu nombre"
-                          className="w-full"
+                          className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                         />
                         {actionData?.errors?.name && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p className="text-red-500 dark:text-red-400 text-sm mt-1">
                             {actionData.errors.name[0]}
                           </p>
                         )}
@@ -206,7 +206,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                         <div>
                           <label
                             htmlFor="email"
-                            className="block text-sm font-medium text-navy-700 mb-2"
+                            className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
                           >
                             Email *
                           </label>
@@ -216,10 +216,10 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                             name="email"
                             required
                             placeholder="tu@email.com"
-                            className="w-full"
+                            className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                           />
                           {actionData?.errors?.email && (
-                            <p className="text-red-500 text-sm mt-1">
+                            <p className="text-red-500 dark:text-red-400 text-sm mt-1">
                               {actionData.errors.email[0]}
                             </p>
                           )}
@@ -228,7 +228,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                         <div>
                           <label
                             htmlFor="phone"
-                            className="block text-sm font-medium text-navy-700 mb-2"
+                            className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
                           >
                             Teléfono
                           </label>
@@ -237,7 +237,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                             id="phone"
                             name="phone"
                             placeholder="55 1234 5678"
-                            className="w-full"
+                            className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                           />
                         </div>
                       </div>
@@ -245,7 +245,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                       <div>
                         <label
                           htmlFor="message"
-                          className="block text-sm font-medium text-navy-700 mb-2"
+                          className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
                         >
                           Mensaje *
                         </label>
@@ -255,10 +255,10 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                           rows={5}
                           required
                           placeholder="¿En qué podemos ayudarte?"
-                          className="w-full resize-none"
+                          className="w-full resize-none bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                         />
                         {actionData?.errors?.message && (
-                          <p className="text-red-500 text-sm mt-1">
+                          <p className="text-red-500 dark:text-red-400 text-sm mt-1">
                             {actionData.errors.message[0]}
                           </p>
                         )}
@@ -299,10 +299,10 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
             <AnimatedSection direction="right">
               <div className="space-y-8">
                 <div>
-                  <h2 className="heading-sm text-navy-900 mb-4">
+                  <h2 className="heading-sm text-navy-900 dark:text-white mb-4">
                     Información de Contacto
                   </h2>
-                  <p className="text-navy-600 text-lg">
+                  <p className="text-navy-600 dark:text-navy-300 text-lg">
                     Estamos disponibles para atenderte en cualquiera de nuestros
                     canales de comunicación.
                   </p>
@@ -318,25 +318,25 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                       transition={{ delay: index * 0.1 }}
                       className="flex gap-4"
                     >
-                      <div className="w-12 h-12 rounded-xl bg-navy-100 flex items-center justify-center flex-shrink-0">
-                        <info.icon className="w-6 h-6 text-navy-700" />
+                      <div className="w-12 h-12 rounded-xl bg-navy-100 dark:bg-navy-800 flex items-center justify-center flex-shrink-0">
+                        <info.icon className="w-6 h-6 text-navy-700 dark:text-navy-300" />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-navy-900">
+                        <h3 className="font-semibold text-navy-900 dark:text-white">
                           {info.title}
                         </h3>
                         {info.href ? (
                           <a
                             href={info.href}
-                            className="text-navy-600 hover:text-navy-900 transition-colors"
+                            className="text-navy-600 dark:text-navy-300 hover:text-navy-900 dark:hover:text-white transition-colors"
                           >
                             {info.content}
                           </a>
                         ) : (
-                          <p className="text-navy-600">{info.content}</p>
+                          <p className="text-navy-600 dark:text-navy-300">{info.content}</p>
                         )}
                         {info.subcontent && (
-                          <p className="text-navy-500 text-sm">
+                          <p className="text-navy-500 dark:text-navy-400 text-sm">
                             {info.subcontent}
                           </p>
                         )}
@@ -346,16 +346,16 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                 </div>
 
                 {/* WhatsApp CTA */}
-                <div className="bg-green-50 rounded-2xl p-6">
+                <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-6">
                   <div className="flex items-center gap-4">
                     <div className="w-14 h-14 rounded-full bg-green-500 flex items-center justify-center">
                       <MessageCircle className="w-7 h-7 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-navy-900">
+                      <h3 className="font-semibold text-navy-900 dark:text-white">
                         WhatsApp directo
                       </h3>
-                      <p className="text-navy-600 text-sm">
+                      <p className="text-navy-600 dark:text-navy-300 text-sm">
                         Escríbenos y te atenderemos de inmediato
                       </p>
                     </div>
@@ -372,7 +372,7 @@ export default function Contacto({ loaderData, actionData }: Route.ComponentProp
                 </div>
 
                 {/* Map */}
-                <div className="rounded-2xl overflow-hidden shadow-lg">
+                <div className="rounded-2xl overflow-hidden shadow-lg dark:shadow-navy-950/50">
                   <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.180558267767!2d-99.18080492395397!3d19.36316454151894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff9c33d3a9b7%3A0x7c6e3d93e9c8b123!2sAv.%20Barranca%20del%20Muerto%2C%20Florida%2C%20Ciudad%20de%20M%C3%A9xico!5e0!3m2!1ses!2smx!4v1699900000000!5m2!1ses!2smx"
                     width="100%"
