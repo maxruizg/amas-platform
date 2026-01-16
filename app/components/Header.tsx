@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin, Car } from "lucide-react";
 import { cn } from "~/lib/utils";
@@ -15,15 +15,28 @@ const navLinks = [
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+
+      setIsScrolled(currentScrollY > 20);
+
+      // Hide header when scrolling down, show when scrolling up
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+
+      lastScrollY.current = currentScrollY;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -62,10 +75,11 @@ export function Header() {
       {/* Main header */}
       <header
         className={cn(
-          "sticky top-0 z-50 transition-all duration-500",
+          "sticky top-0 z-50 transition-all duration-300",
           isScrolled
             ? "bg-white/95 dark:bg-navy-900/95 backdrop-blur-xl shadow-lg shadow-navy-900/5 dark:shadow-navy-950/50"
-            : "bg-white dark:bg-navy-900"
+            : "bg-white dark:bg-navy-900",
+          isHidden && !isMobileMenuOpen ? "-translate-y-full" : "translate-y-0"
         )}
       >
         <div className="container-custom">

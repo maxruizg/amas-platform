@@ -4,6 +4,7 @@ import type { Route } from "./+types/login";
 import { authenticateUser, getOptionalUser } from "~/lib/auth.server";
 import { motion } from "framer-motion";
 import { Car, Lock, Mail, Eye, EyeOff } from "lucide-react";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 export function meta() {
   return [{ title: "Admin Login | AMSA Autos" }];
@@ -45,11 +46,16 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="min-h-screen bg-navy-950 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-navy-100 dark:bg-navy-950 flex items-center justify-center p-4">
+      {/* Theme toggle */}
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle />
+      </div>
+
       {/* Background effects */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full bg-navy-800/30 blur-3xl" />
-        <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] rounded-full bg-navy-700/20 blur-3xl" />
+        <div className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] rounded-full bg-navy-200/50 dark:bg-navy-800/30 blur-3xl" />
+        <div className="absolute -bottom-1/2 -left-1/4 w-[600px] h-[600px] rounded-full bg-navy-300/30 dark:bg-navy-700/20 blur-3xl" />
       </div>
 
       <motion.div
@@ -58,16 +64,16 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
         transition={{ duration: 0.5 }}
         className="relative w-full max-w-md"
       >
-        <div className="bg-white rounded-3xl p-8 shadow-2xl">
+        <div className="bg-white dark:bg-navy-900 rounded-3xl p-8 shadow-2xl dark:shadow-navy-950/50">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-navy-900 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Car className="w-9 h-9 text-white" />
+            <div className="w-16 h-16 bg-navy-900 dark:bg-white rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Car className="w-9 h-9 text-white dark:text-navy-900" />
             </div>
-            <h1 className="text-2xl font-bold text-navy-900">
+            <h1 className="text-2xl font-bold text-navy-900 dark:text-white">
               Panel de Administración
             </h1>
-            <p className="text-navy-500 mt-1">AMSA Autos</p>
+            <p className="text-navy-500 dark:text-navy-400 mt-1">AMSA Autos</p>
           </div>
 
           {/* Error message */}
@@ -75,7 +81,7 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
             <motion.div
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6"
+              className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-xl mb-6"
             >
               {actionData.error}
             </motion.div>
@@ -86,7 +92,7 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-navy-700 mb-2"
+                className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
               >
                 Email
               </label>
@@ -97,9 +103,10 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                   id="email"
                   name="email"
                   required
+                  autoComplete="email"
                   placeholder="admin@autosamsa.com.mx"
                   style={{ paddingLeft: '3rem' }}
-                  className="w-full pr-4 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
+                  className="w-full pr-4 py-3 rounded-xl border border-navy-200 dark:border-navy-700 bg-white dark:bg-navy-800 text-navy-900 dark:text-white placeholder:text-navy-400 transition-all duration-300 focus:border-navy-500 dark:focus:border-navy-400 focus:ring-2 focus:ring-navy-500/20"
                 />
               </div>
             </div>
@@ -107,7 +114,7 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-navy-700 mb-2"
+                className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2"
               >
                 Contraseña
               </label>
@@ -118,14 +125,15 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                   id="password"
                   name="password"
                   required
+                  autoComplete="current-password"
                   placeholder="••••••••"
                   style={{ paddingLeft: '3rem', paddingRight: '3rem' }}
-                  className="w-full py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
+                  className="w-full py-3 rounded-xl border border-navy-200 dark:border-navy-700 bg-white dark:bg-navy-800 text-navy-900 dark:text-white placeholder:text-navy-400 transition-all duration-300 focus:border-navy-500 dark:focus:border-navy-400 focus:ring-2 focus:ring-navy-500/20"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-navy-400 hover:text-navy-600 z-10"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 z-10"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />
@@ -164,7 +172,7 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
           <div className="mt-6 text-center">
             <a
               href="/"
-              className="text-sm text-navy-500 hover:text-navy-700 transition-colors"
+              className="text-sm text-navy-500 dark:text-navy-400 hover:text-navy-700 dark:hover:text-navy-200 transition-colors"
             >
               ← Volver al sitio
             </a>
@@ -172,7 +180,7 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
         </div>
 
         {/* Footer note */}
-        <p className="text-center text-navy-400 text-sm mt-6">
+        <p className="text-center text-navy-500 dark:text-navy-400 text-sm mt-6">
           Acceso restringido a personal autorizado
         </p>
       </motion.div>

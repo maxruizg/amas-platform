@@ -15,6 +15,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { formatPrice } from "~/lib/utils";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 export function meta() {
   return [{ title: "Dashboard | Admin AMSA" }];
@@ -102,17 +103,17 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
   const { user, stats, recentCars } = loaderData;
 
   return (
-    <div className="min-h-screen bg-navy-50">
+    <div className="min-h-screen bg-navy-50 dark:bg-navy-950">
       {/* Header */}
-      <header className="bg-white border-b border-navy-100 sticky top-0 z-50">
+      <header className="bg-white dark:bg-navy-900 border-b border-navy-100 dark:border-navy-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link to="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center">
-                  <Car className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-navy-900 dark:bg-white rounded-xl flex items-center justify-center">
+                  <Car className="w-6 h-6 text-white dark:text-navy-900" />
                 </div>
-                <span className="text-xl font-bold text-navy-900">
+                <span className="text-xl font-bold text-navy-900 dark:text-white">
                   AMSA Admin
                 </span>
               </Link>
@@ -121,34 +122,35 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
             <nav className="hidden md:flex items-center gap-1">
               <Link
                 to="/admin"
-                className="px-4 py-2 rounded-lg bg-navy-100 text-navy-900 font-medium"
+                className="px-4 py-2 rounded-lg bg-navy-100 dark:bg-navy-800 text-navy-900 dark:text-white font-medium"
               >
                 Dashboard
               </Link>
               <Link
                 to="/admin/autos"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Inventario
               </Link>
               <Link
                 to="/admin/imagenes"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Imágenes
               </Link>
             </nav>
 
             <div className="flex items-center gap-4">
-              <span className="text-sm text-navy-600">
+              <span className="text-sm text-navy-600 dark:text-navy-300">
                 Hola, {user.name}
               </span>
+              <ThemeToggle />
               <form method="post">
                 <button
                   type="submit"
                   name="intent"
                   value="logout"
-                  className="p-2 rounded-lg text-navy-400 hover:text-navy-600 hover:bg-navy-100 transition-colors"
+                  className="p-2 rounded-lg text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
                 >
                   <LogOut className="w-5 h-5" />
                 </button>
@@ -162,8 +164,8 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Welcome */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-navy-900">Dashboard</h1>
-          <p className="text-navy-600 mt-1">
+          <h1 className="text-3xl font-bold text-navy-900 dark:text-white">Dashboard</h1>
+          <p className="text-navy-600 dark:text-navy-300 mt-1">
             Bienvenido al panel de administración de AMSA Autos
           </p>
         </div>
@@ -176,7 +178,7 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-              className="bg-white rounded-2xl p-6 shadow-sm border border-navy-100"
+              className="bg-white dark:bg-navy-900 rounded-2xl p-6 shadow-sm border border-navy-100 dark:border-navy-800"
             >
               <div className="flex items-center gap-4">
                 <div
@@ -185,10 +187,10 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
                   <stat.icon className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-navy-900">
+                  <p className="text-3xl font-bold text-navy-900 dark:text-white">
                     {stats[stat.key as keyof typeof stats]}
                   </p>
-                  <p className="text-sm text-navy-500">{stat.label}</p>
+                  <p className="text-sm text-navy-500 dark:text-navy-400">{stat.label}</p>
                 </div>
               </div>
             </motion.div>
@@ -199,20 +201,20 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Quick Actions */}
           <div className="lg:col-span-1">
-            <h2 className="text-lg font-semibold text-navy-900 mb-4">
+            <h2 className="text-lg font-semibold text-navy-900 dark:text-white mb-4">
               Acciones Rápidas
             </h2>
             <div className="space-y-3">
               <Link
                 to="/admin/autos/nuevo"
-                className="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm border border-navy-100 hover:border-navy-300 transition-colors group"
+                className="flex items-center gap-4 bg-white dark:bg-navy-900 rounded-xl p-4 shadow-sm border border-navy-100 dark:border-navy-800 hover:border-navy-300 dark:hover:border-navy-600 transition-colors group"
               >
-                <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                  <Plus className="w-5 h-5 text-green-600" />
+                <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-lg flex items-center justify-center">
+                  <Plus className="w-5 h-5 text-green-600 dark:text-green-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-navy-900">Agregar Auto</p>
-                  <p className="text-sm text-navy-500">
+                  <p className="font-medium text-navy-900 dark:text-white">Agregar Auto</p>
+                  <p className="text-sm text-navy-500 dark:text-navy-400">
                     Nuevo vehículo al inventario
                   </p>
                 </div>
@@ -221,14 +223,14 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
 
               <Link
                 to="/admin/autos"
-                className="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm border border-navy-100 hover:border-navy-300 transition-colors group"
+                className="flex items-center gap-4 bg-white dark:bg-navy-900 rounded-xl p-4 shadow-sm border border-navy-100 dark:border-navy-800 hover:border-navy-300 dark:hover:border-navy-600 transition-colors group"
               >
-                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                  <Car className="w-5 h-5 text-blue-600" />
+                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                  <Car className="w-5 h-5 text-blue-600 dark:text-blue-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-navy-900">Ver Inventario</p>
-                  <p className="text-sm text-navy-500">
+                  <p className="font-medium text-navy-900 dark:text-white">Ver Inventario</p>
+                  <p className="text-sm text-navy-500 dark:text-navy-400">
                     Gestionar vehículos
                   </p>
                 </div>
@@ -237,14 +239,14 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
 
               <Link
                 to="/admin/imagenes"
-                className="flex items-center gap-4 bg-white rounded-xl p-4 shadow-sm border border-navy-100 hover:border-navy-300 transition-colors group"
+                className="flex items-center gap-4 bg-white dark:bg-navy-900 rounded-xl p-4 shadow-sm border border-navy-100 dark:border-navy-800 hover:border-navy-300 dark:hover:border-navy-600 transition-colors group"
               >
-                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                  <Image className="w-5 h-5 text-purple-600" />
+                <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                  <Image className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                 </div>
                 <div className="flex-1">
-                  <p className="font-medium text-navy-900">Imágenes del Sitio</p>
-                  <p className="text-sm text-navy-500">
+                  <p className="font-medium text-navy-900 dark:text-white">Imágenes del Sitio</p>
+                  <p className="text-sm text-navy-500 dark:text-navy-400">
                     Gestionar banners y fotos
                   </p>
                 </div>
@@ -256,27 +258,27 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
           {/* Recent Cars */}
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-semibold text-navy-900">
+              <h2 className="text-lg font-semibold text-navy-900 dark:text-white">
                 Autos Recientes
               </h2>
               <Link
                 to="/admin/autos"
-                className="text-sm text-navy-600 hover:text-navy-900 transition-colors"
+                className="text-sm text-navy-600 dark:text-navy-300 hover:text-navy-900 dark:hover:text-white transition-colors"
               >
                 Ver todos →
               </Link>
             </div>
 
-            <div className="bg-white rounded-2xl shadow-sm border border-navy-100 overflow-hidden">
+            <div className="bg-white dark:bg-navy-900 rounded-2xl shadow-sm border border-navy-100 dark:border-navy-800 overflow-hidden">
               {recentCars.length > 0 ? (
-                <div className="divide-y divide-navy-100">
+                <div className="divide-y divide-navy-100 dark:divide-navy-800">
                   {recentCars.map((car) => (
                     <Link
                       key={car.id}
                       to={`/admin/autos/${car.id}`}
-                      className="flex items-center gap-4 p-4 hover:bg-navy-50 transition-colors"
+                      className="flex items-center gap-4 p-4 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
                     >
-                      <div className="w-16 h-12 rounded-lg overflow-hidden bg-navy-100 flex-shrink-0">
+                      <div className="w-16 h-12 rounded-lg overflow-hidden bg-navy-100 dark:bg-navy-800 flex-shrink-0">
                         {car.images[0] ? (
                           <img
                             src={car.images[0].url}
@@ -290,22 +292,22 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-medium text-navy-900 truncate">
+                        <p className="font-medium text-navy-900 dark:text-white truncate">
                           {car.brand} {car.model}
                         </p>
-                        <p className="text-sm text-navy-500">{car.year}</p>
+                        <p className="text-sm text-navy-500 dark:text-navy-400">{car.year}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-semibold text-navy-900">
+                        <p className="font-semibold text-navy-900 dark:text-white">
                           {formatPrice(car.price)}
                         </p>
                         <span
                           className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${
                             car.status === "available"
-                              ? "bg-green-100 text-green-700"
+                              ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
                               : car.status === "reserved"
-                              ? "bg-yellow-100 text-yellow-700"
-                              : "bg-red-100 text-red-700"
+                              ? "bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400"
+                              : "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400"
                           }`}
                         >
                           {car.status === "available"
@@ -320,8 +322,8 @@ export default function AdminDashboard({ loaderData }: Route.ComponentProps) {
                 </div>
               ) : (
                 <div className="p-8 text-center">
-                  <Car className="w-12 h-12 text-navy-300 mx-auto mb-4" />
-                  <p className="text-navy-600">No hay autos en el inventario</p>
+                  <Car className="w-12 h-12 text-navy-300 dark:text-navy-600 mx-auto mb-4" />
+                  <p className="text-navy-600 dark:text-navy-400">No hay autos en el inventario</p>
                   <Link
                     to="/admin/autos/nuevo"
                     className="btn-primary mt-4 inline-block"

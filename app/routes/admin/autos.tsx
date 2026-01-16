@@ -15,6 +15,7 @@ import {
   LogOut,
 } from "lucide-react";
 import { formatPrice, formatMileage, cn } from "~/lib/utils";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 export function meta() {
   return [{ title: "Inventario | Admin AMSA" }];
@@ -96,17 +97,17 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
   };
 
   return (
-    <div className="min-h-screen bg-navy-50">
+    <div className="min-h-screen bg-navy-50 dark:bg-navy-950">
       {/* Header */}
-      <header className="bg-white border-b border-navy-100 sticky top-0 z-50">
+      <header className="bg-white dark:bg-navy-900 border-b border-navy-100 dark:border-navy-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link to="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center">
-                  <Car className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-navy-900 dark:bg-white rounded-xl flex items-center justify-center">
+                  <Car className="w-6 h-6 text-white dark:text-navy-900" />
                 </div>
-                <span className="text-xl font-bold text-navy-900">
+                <span className="text-xl font-bold text-navy-900 dark:text-white">
                   AMSA Admin
                 </span>
               </Link>
@@ -115,34 +116,37 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
             <nav className="hidden md:flex items-center gap-1">
               <Link
                 to="/admin"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Dashboard
               </Link>
               <Link
                 to="/admin/autos"
-                className="px-4 py-2 rounded-lg bg-navy-100 text-navy-900 font-medium"
+                className="px-4 py-2 rounded-lg bg-navy-100 dark:bg-navy-800 text-navy-900 dark:text-white font-medium"
               >
                 Inventario
               </Link>
               <Link
                 to="/admin/imagenes"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Imágenes
               </Link>
             </nav>
 
-            <form method="post" action="/admin">
-              <button
-                type="submit"
-                name="intent"
-                value="logout"
-                className="p-2 rounded-lg text-navy-400 hover:text-navy-600 hover:bg-navy-100 transition-colors"
-              >
-                <LogOut className="w-5 h-5" />
-              </button>
-            </form>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <form method="post" action="/admin">
+                <button
+                  type="submit"
+                  name="intent"
+                  value="logout"
+                  className="p-2 rounded-lg text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </header>
@@ -152,8 +156,8 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
         {/* Title and actions */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-navy-900">Inventario</h1>
-            <p className="text-navy-600 mt-1">
+            <h1 className="text-3xl font-bold text-navy-900 dark:text-white">Inventario</h1>
+            <p className="text-navy-600 dark:text-navy-300 mt-1">
               {cars.length} {cars.length === 1 ? "auto" : "autos"} en total
             </p>
           </div>
@@ -167,7 +171,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
         </div>
 
         {/* Filters */}
-        <div className="bg-white rounded-2xl p-4 shadow-sm border border-navy-100 mb-6">
+        <div className="bg-white dark:bg-navy-900 rounded-2xl p-4 shadow-sm border border-navy-100 dark:border-navy-800 mb-6">
           <div className="flex flex-col sm:flex-row gap-4">
             <form onSubmit={handleSearch} className="flex-1">
               <div className="relative">
@@ -178,7 +182,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   style={{ paddingLeft: '3rem' }}
-                  className="w-full rounded-xl"
+                  className="w-full rounded-xl bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                 />
               </div>
             </form>
@@ -186,7 +190,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
             <select
               value={searchParams.get("estado") || ""}
               onChange={(e) => setFilter("estado", e.target.value)}
-              className="rounded-xl"
+              className="rounded-xl bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white"
             >
               <option value="">Todos los estados</option>
               <option value="available">Disponible</option>
@@ -205,10 +209,10 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.05 }}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm border border-navy-100"
+                className="bg-white dark:bg-navy-900 rounded-2xl overflow-hidden shadow-sm border border-navy-100 dark:border-navy-800"
               >
                 {/* Image */}
-                <div className="aspect-video bg-navy-100 relative">
+                <div className="aspect-video bg-navy-100 dark:bg-navy-800 relative">
                   {car.images[0] ? (
                     <img
                       src={car.images[0].url}
@@ -217,7 +221,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
-                      <Car className="w-12 h-12 text-navy-300" />
+                      <Car className="w-12 h-12 text-navy-300 dark:text-navy-600" />
                     </div>
                   )}
 
@@ -226,10 +230,10 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                     className={cn(
                       "absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-medium",
                       car.status === "available"
-                        ? "bg-green-100 text-green-700"
+                        ? "bg-green-100 dark:bg-green-900/50 text-green-700 dark:text-green-400"
                         : car.status === "reserved"
-                        ? "bg-yellow-100 text-yellow-700"
-                        : "bg-red-100 text-red-700"
+                        ? "bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-400"
+                        : "bg-red-100 dark:bg-red-900/50 text-red-700 dark:text-red-400"
                     )}
                   >
                     {car.status === "available"
@@ -240,7 +244,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                   </span>
 
                   {car.featured && (
-                    <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium bg-navy-900 text-white">
+                    <span className="absolute top-3 right-3 px-3 py-1 rounded-full text-xs font-medium bg-navy-900 dark:bg-white text-white dark:text-navy-900">
                       Destacado
                     </span>
                   )}
@@ -248,17 +252,17 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
 
                 {/* Content */}
                 <div className="p-4">
-                  <h3 className="text-lg font-bold text-navy-900">
+                  <h3 className="text-lg font-bold text-navy-900 dark:text-white">
                     {car.brand} {car.model}
                   </h3>
-                  <p className="text-navy-500">{car.year}</p>
+                  <p className="text-navy-500 dark:text-navy-400">{car.year}</p>
 
-                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-navy-100">
+                  <div className="flex items-center justify-between mt-3 pt-3 border-t border-navy-100 dark:border-navy-800">
                     <div>
-                      <p className="text-lg font-bold text-navy-900">
+                      <p className="text-lg font-bold text-navy-900 dark:text-white">
                         {formatPrice(car.price)}
                       </p>
-                      <p className="text-sm text-navy-500">
+                      <p className="text-sm text-navy-500 dark:text-navy-400">
                         {formatMileage(car.mileage)}
                       </p>
                     </div>
@@ -268,21 +272,21 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                       <Link
                         to={`/auto/${car.id}`}
                         target="_blank"
-                        className="p-2 rounded-lg text-navy-400 hover:text-navy-600 hover:bg-navy-100 transition-colors"
+                        className="p-2 rounded-lg text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
                         title="Ver en sitio"
                       >
                         <Eye className="w-5 h-5" />
                       </Link>
                       <Link
                         to={`/admin/autos/${car.id}`}
-                        className="p-2 rounded-lg text-navy-400 hover:text-navy-600 hover:bg-navy-100 transition-colors"
+                        className="p-2 rounded-lg text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
                         title="Editar"
                       >
                         <Edit className="w-5 h-5" />
                       </Link>
                       <button
                         onClick={() => setDeleteConfirm(car.id)}
-                        className="p-2 rounded-lg text-red-400 hover:text-red-600 hover:bg-red-50 transition-colors"
+                        className="p-2 rounded-lg text-red-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                         title="Eliminar"
                       >
                         <Trash2 className="w-5 h-5" />
@@ -293,8 +297,8 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
 
                 {/* Delete confirmation */}
                 {deleteConfirm === car.id && (
-                  <div className="p-4 bg-red-50 border-t border-red-100">
-                    <p className="text-sm text-red-700 mb-3">
+                  <div className="p-4 bg-red-50 dark:bg-red-900/20 border-t border-red-100 dark:border-red-900/50">
+                    <p className="text-sm text-red-700 dark:text-red-400 mb-3">
                       ¿Seguro que quieres eliminar este auto?
                     </p>
                     <div className="flex gap-2">
@@ -310,7 +314,7 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
                       </form>
                       <button
                         onClick={() => setDeleteConfirm(null)}
-                        className="flex-1 py-2 bg-white text-navy-700 rounded-lg text-sm font-medium border border-navy-200 hover:bg-navy-50 transition-colors"
+                        className="flex-1 py-2 bg-white dark:bg-navy-800 text-navy-700 dark:text-navy-200 rounded-lg text-sm font-medium border border-navy-200 dark:border-navy-700 hover:bg-navy-50 dark:hover:bg-navy-700 transition-colors"
                       >
                         Cancelar
                       </button>
@@ -321,12 +325,12 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
             ))}
           </div>
         ) : (
-          <div className="bg-white rounded-2xl p-12 text-center shadow-sm border border-navy-100">
-            <Car className="w-16 h-16 text-navy-300 mx-auto mb-4" />
-            <h3 className="text-xl font-bold text-navy-900 mb-2">
+          <div className="bg-white dark:bg-navy-900 rounded-2xl p-12 text-center shadow-sm border border-navy-100 dark:border-navy-800">
+            <Car className="w-16 h-16 text-navy-300 dark:text-navy-600 mx-auto mb-4" />
+            <h3 className="text-xl font-bold text-navy-900 dark:text-white mb-2">
               No hay autos
             </h3>
-            <p className="text-navy-600 mb-6">
+            <p className="text-navy-600 dark:text-navy-400 mb-6">
               {searchParams.toString()
                 ? "No se encontraron autos con esos filtros"
                 : "Agrega tu primer auto al inventario"}

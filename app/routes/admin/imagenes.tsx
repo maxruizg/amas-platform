@@ -5,6 +5,7 @@ import { prisma } from "~/lib/db.server";
 import { requireAuth } from "~/lib/auth.server";
 import { motion } from "framer-motion";
 import { Car, Image, Plus, X, Save, Trash2, LogOut } from "lucide-react";
+import { ThemeToggle } from "~/components/ThemeToggle";
 
 export function meta() {
   return [{ title: "Imágenes del Sitio | Admin AMSA" }];
@@ -98,17 +99,17 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
   const [showAddForm, setShowAddForm] = useState(false);
 
   return (
-    <div className="min-h-screen bg-navy-50">
+    <div className="min-h-screen bg-navy-50 dark:bg-navy-950">
       {/* Header */}
-      <header className="bg-white border-b border-navy-100 sticky top-0 z-50">
+      <header className="bg-white dark:bg-navy-900 border-b border-navy-100 dark:border-navy-800 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link to="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-navy-900 rounded-xl flex items-center justify-center">
-                  <Car className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 bg-navy-900 dark:bg-white rounded-xl flex items-center justify-center">
+                  <Car className="w-6 h-6 text-white dark:text-navy-900" />
                 </div>
-                <span className="text-xl font-bold text-navy-900">
+                <span className="text-xl font-bold text-navy-900 dark:text-white">
                   AMSA Admin
                 </span>
               </Link>
@@ -117,34 +118,37 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
             <nav className="hidden md:flex items-center gap-1">
               <Link
                 to="/admin"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Dashboard
               </Link>
               <Link
                 to="/admin/autos"
-                className="px-4 py-2 rounded-lg text-navy-600 hover:bg-navy-50 transition-colors"
+                className="px-4 py-2 rounded-lg text-navy-600 dark:text-navy-300 hover:bg-navy-50 dark:hover:bg-navy-800 transition-colors"
               >
                 Inventario
               </Link>
               <Link
                 to="/admin/imagenes"
-                className="px-4 py-2 rounded-lg bg-navy-100 text-navy-900 font-medium"
+                className="px-4 py-2 rounded-lg bg-navy-100 dark:bg-navy-800 text-navy-900 dark:text-white font-medium"
               >
                 Imágenes
               </Link>
             </nav>
 
-            <form method="post" action="/admin">
-              <button
-                type="submit"
-                name="intent"
-                value="logout"
-                className="p-2 rounded-lg text-navy-400 hover:text-navy-600 hover:bg-navy-100 transition-colors"
-              >
-                <LogOut className="w-5 h-5" />
-              </button>
-            </form>
+            <div className="flex items-center gap-2">
+              <ThemeToggle />
+              <form method="post" action="/admin">
+                <button
+                  type="submit"
+                  name="intent"
+                  value="logout"
+                  className="p-2 rounded-lg text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
+                >
+                  <LogOut className="w-5 h-5" />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </header>
@@ -154,10 +158,10 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
         {/* Title and actions */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-navy-900">
+            <h1 className="text-3xl font-bold text-navy-900 dark:text-white">
               Imágenes del Sitio
             </h1>
-            <p className="text-navy-600 mt-1">
+            <p className="text-navy-600 dark:text-navy-300 mt-1">
               Gestiona las imágenes de las diferentes secciones del sitio web
             </p>
           </div>
@@ -175,7 +179,7 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-xl mb-6"
+            className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 text-green-700 dark:text-green-400 px-4 py-3 rounded-xl mb-6"
           >
             Operación completada exitosamente
           </motion.div>
@@ -185,7 +189,7 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-xl mb-6"
+            className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 px-4 py-3 rounded-xl mb-6"
           >
             {actionData.error}
           </motion.div>
@@ -196,10 +200,10 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
           {sections.map((section) => (
             <div
               key={section.value}
-              className="bg-white rounded-2xl shadow-sm border border-navy-100 overflow-hidden"
+              className="bg-white dark:bg-navy-900 rounded-2xl shadow-sm border border-navy-100 dark:border-navy-800 overflow-hidden"
             >
-              <div className="px-6 py-4 bg-navy-50 border-b border-navy-100">
-                <h2 className="text-lg font-semibold text-navy-900">
+              <div className="px-6 py-4 bg-navy-50 dark:bg-navy-800 border-b border-navy-100 dark:border-navy-700">
+                <h2 className="text-lg font-semibold text-navy-900 dark:text-white">
                   {section.label}
                 </h2>
               </div>
@@ -212,8 +216,8 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
                         key={image.id}
                         className={`relative rounded-xl overflow-hidden border-2 ${
                           image.isActive
-                            ? "border-green-400"
-                            : "border-navy-200 opacity-50"
+                            ? "border-green-400 dark:border-green-500"
+                            : "border-navy-200 dark:border-navy-700 opacity-50"
                         }`}
                       >
                         <div className="aspect-video">
@@ -225,13 +229,13 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
                         </div>
 
                         {/* Image info */}
-                        <div className="p-3 bg-white">
+                        <div className="p-3 bg-white dark:bg-navy-800">
                           {image.title && (
-                            <p className="font-medium text-navy-900 text-sm truncate">
+                            <p className="font-medium text-navy-900 dark:text-white text-sm truncate">
                               {image.title}
                             </p>
                           )}
-                          <p className="text-xs text-navy-500 truncate">
+                          <p className="text-xs text-navy-500 dark:text-navy-400 truncate">
                             {image.url}
                           </p>
                         </div>
@@ -290,8 +294,8 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 text-navy-500">
-                    <Image className="w-12 h-12 mx-auto mb-3 text-navy-300" />
+                  <div className="text-center py-8 text-navy-500 dark:text-navy-400">
+                    <Image className="w-12 h-12 mx-auto mb-3 text-navy-300 dark:text-navy-600" />
                     <p>No hay imágenes en esta sección</p>
                   </div>
                 )}
@@ -306,15 +310,15 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
-              className="bg-white rounded-2xl p-6 max-w-md w-full shadow-2xl"
+              className="bg-white dark:bg-navy-900 rounded-2xl p-6 max-w-md w-full shadow-2xl"
             >
               <div className="flex items-center justify-between mb-6">
-                <h3 className="text-xl font-bold text-navy-900">
+                <h3 className="text-xl font-bold text-navy-900 dark:text-white">
                   Agregar Imagen
                 </h3>
                 <button
                   onClick={() => setShowAddForm(false)}
-                  className="p-2 text-navy-400 hover:text-navy-600 transition-colors"
+                  className="p-2 text-navy-400 hover:text-navy-600 dark:hover:text-navy-200 transition-colors"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -325,10 +329,10 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
 
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Sección *
                     </label>
-                    <select name="section" required className="w-full rounded-xl">
+                    <select name="section" required className="w-full rounded-xl bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white">
                       <option value="">Seleccionar sección</option>
                       {sections.map((section) => (
                         <option key={section.value} value={section.value}>
@@ -339,7 +343,7 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       URL de la imagen *
                     </label>
                     <input
@@ -347,31 +351,31 @@ export default function AdminImagenes({ loaderData, actionData }: Route.Componen
                       name="url"
                       required
                       placeholder="https://ejemplo.com/imagen.jpg"
-                      className="w-full"
+                      className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Título (opcional)
                     </label>
                     <input
                       type="text"
                       name="title"
                       placeholder="Título de la imagen"
-                      className="w-full"
+                      className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Texto alternativo (opcional)
                     </label>
                     <input
                       type="text"
                       name="alt"
                       placeholder="Descripción para accesibilidad"
-                      className="w-full"
+                      className="w-full bg-white dark:bg-navy-800 border-navy-200 dark:border-navy-700 text-navy-900 dark:text-white placeholder:text-navy-400"
                     />
                   </div>
                 </div>
