@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Override dark mode to use class selector only (not media query) */
+@variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -32,8 +35,13 @@ html {
 }
 
 body {
-  @apply bg-white text-navy-900 antialiased;
+  @apply bg-white text-navy-900 antialiased transition-colors duration-300;
   font-feature-settings: "cv11", "ss01";
+}
+
+/* Dark mode base */
+.dark body {
+  @apply bg-navy-950 text-navy-100;
 }
 
 /* Custom scrollbar */
@@ -46,11 +54,23 @@ body {
   @apply bg-navy-100;
 }
 
+.dark ::-webkit-scrollbar-track {
+  @apply bg-navy-900;
+}
+
 ::-webkit-scrollbar-thumb {
   @apply bg-navy-400 rounded-full;
 }
 
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-navy-600 rounded-full;
+}
+
 ::-webkit-scrollbar-thumb:hover {
+  @apply bg-navy-500;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
   @apply bg-navy-500;
 }
 
@@ -59,9 +79,17 @@ body {
   @apply bg-navy-900 text-white;
 }
 
+.dark ::selection {
+  @apply bg-navy-300 text-navy-900;
+}
+
 /* Focus styles */
 *:focus-visible {
   @apply outline-none ring-2 ring-navy-500 ring-offset-2;
+}
+
+.dark *:focus-visible {
+  @apply ring-navy-400 ring-offset-navy-950;
 }
 
 /* Custom animations */
@@ -191,6 +219,10 @@ body {
   @apply bg-gradient-to-r from-navy-700 via-navy-900 to-navy-700 bg-clip-text text-transparent;
 }
 
+.dark .gradient-text {
+  @apply bg-gradient-to-r from-navy-200 via-white to-navy-200 bg-clip-text text-transparent;
+}
+
 /* Card hover effects */
 .card-hover {
   @apply transition-all duration-500;
@@ -200,11 +232,19 @@ body {
   @apply -translate-y-2 shadow-2xl shadow-navy-900/20;
 }
 
+.dark .card-hover:hover {
+  @apply shadow-navy-950/50;
+}
+
 /* Button styles */
 .btn-primary {
   @apply bg-navy-900 text-white px-8 py-4 rounded-full font-semibold
          transition-all duration-300 hover:bg-navy-800 hover:shadow-xl
          hover:shadow-navy-900/30 hover:-translate-y-0.5 active:translate-y-0;
+}
+
+.dark .btn-primary {
+  @apply bg-white text-navy-900 hover:bg-navy-100 hover:shadow-white/20;
 }
 
 .btn-secondary {
@@ -213,9 +253,17 @@ body {
          hover:bg-navy-50 hover:shadow-lg hover:-translate-y-0.5;
 }
 
+.dark .btn-secondary {
+  @apply bg-transparent text-white border-white hover:bg-white/10;
+}
+
 .btn-ghost {
   @apply text-navy-700 px-6 py-3 rounded-full font-medium
          transition-all duration-300 hover:bg-navy-100;
+}
+
+.dark .btn-ghost {
+  @apply text-navy-200 hover:bg-navy-800;
 }
 
 /* Image container with zoom effect */
@@ -239,6 +287,10 @@ body {
 .underline-animation::after {
   content: '';
   @apply absolute bottom-0 left-0 w-0 h-0.5 bg-navy-900 transition-all duration-300;
+}
+
+.dark .underline-animation::after {
+  @apply bg-white;
 }
 
 .underline-animation:hover::after {
@@ -265,10 +317,25 @@ select {
          focus:ring-navy-500/20;
 }
 
+.dark input[type="text"],
+.dark input[type="email"],
+.dark input[type="password"],
+.dark input[type="number"],
+.dark input[type="tel"],
+.dark textarea,
+.dark select {
+  @apply border-navy-700 bg-navy-900 text-white placeholder:text-navy-400
+         focus:border-navy-400 focus:ring-navy-400/20;
+}
+
 /* Price tag */
 .price-tag {
   @apply bg-navy-900 text-white px-4 py-2 rounded-lg font-bold
          shadow-lg shadow-navy-900/30;
+}
+
+.dark .price-tag {
+  @apply bg-white text-navy-900 shadow-white/20;
 }
 
 /* Badge */
@@ -280,12 +347,24 @@ select {
   @apply bg-navy-100 text-navy-800;
 }
 
+.dark .badge-primary {
+  @apply bg-navy-800 text-navy-200;
+}
+
 .badge-success {
   @apply bg-green-100 text-green-800;
 }
 
+.dark .badge-success {
+  @apply bg-green-900/30 text-green-400;
+}
+
 .badge-warning {
   @apply bg-yellow-100 text-yellow-800;
+}
+
+.dark .badge-warning {
+  @apply bg-yellow-900/30 text-yellow-400;
 }
 
 /* Hero gradient background */
@@ -313,9 +392,17 @@ select {
   @apply bg-navy-200 rounded animate-pulse;
 }
 
+.dark .skeleton {
+  @apply bg-navy-800;
+}
+
 /* Section divider */
 .section-divider {
   @apply h-px bg-gradient-to-r from-transparent via-navy-200 to-transparent;
+}
+
+.dark .section-divider {
+  @apply bg-gradient-to-r from-transparent via-navy-700 to-transparent;
 }
 
 /* Container */

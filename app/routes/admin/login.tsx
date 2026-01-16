@@ -98,7 +98,8 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                   name="email"
                   required
                   placeholder="admin@autosamsa.com.mx"
-                  className="w-full !pl-12 pr-4 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
+                  style={{ paddingLeft: '3rem' }}
+                  className="w-full pr-4 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
                 />
               </div>
             </div>
@@ -118,12 +119,13 @@ export default function AdminLogin({ actionData }: Route.ComponentProps) {
                   name="password"
                   required
                   placeholder="••••••••"
-                  className="w-full !pl-12 !pr-12 py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
+                  style={{ paddingLeft: '3rem', paddingRight: '3rem' }}
+                  className="w-full py-3 rounded-xl border border-navy-200 bg-white transition-all duration-300 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-navy-400 hover:text-navy-600"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 text-navy-400 hover:text-navy-600 z-10"
                 >
                   {showPassword ? (
                     <EyeOff className="w-5 h-5" />

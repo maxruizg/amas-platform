@@ -171,13 +171,14 @@ export default function AdminAutos({ loaderData }: Route.ComponentProps) {
           <div className="flex flex-col sm:flex-row gap-4">
             <form onSubmit={handleSearch} className="flex-1">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400 z-10" />
                 <input
                   type="text"
                   placeholder="Buscar por marca o modelo..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 rounded-xl"
+                  style={{ paddingLeft: '3rem' }}
+                  className="w-full rounded-xl"
                 />
               </div>
             </form>

@@ -39,14 +39,27 @@ export function meta() {
   ];
 }
 
+// Script to apply saved theme (default is light mode)
+const themeScript = `
+  (function() {
+    const stored = localStorage.getItem('theme');
+    // Always remove dark class first, then add only if explicitly set to dark
+    document.documentElement.classList.remove('dark');
+    if (stored === 'dark') {
+      document.documentElement.classList.add('dark');
+    }
+  })();
+`;
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es">
+    <html lang="es" suppressHydrationWarning>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#102a43" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <Meta />
         <Links />
       </head>
@@ -91,10 +104,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center bg-navy-50">
+    <main className="min-h-screen flex items-center justify-center bg-navy-50 dark:bg-navy-950">
       <div className="text-center px-4">
-        <h1 className="text-8xl font-bold text-navy-900 mb-4">{message}</h1>
-        <p className="text-xl text-navy-600 mb-8">{details}</p>
+        <h1 className="text-8xl font-bold text-navy-900 dark:text-white mb-4">{message}</h1>
+        <p className="text-xl text-navy-600 dark:text-navy-300 mb-8">{details}</p>
         <a
           href="/"
           className="btn-primary inline-block"

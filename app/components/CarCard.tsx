@@ -45,7 +45,7 @@ export function CarCard({ car, index = 0 }: CarCardProps) {
       className="group"
     >
       <Link to={`/auto/${car.id}`} className="block">
-        <div className="bg-white rounded-2xl overflow-hidden shadow-lg shadow-navy-900/5 card-hover border border-navy-100/50">
+        <div className="bg-white dark:bg-navy-900 rounded-2xl overflow-hidden shadow-lg shadow-navy-900/5 dark:shadow-navy-950/50 card-hover border border-navy-100/50 dark:border-navy-800">
           {/* Image container */}
           <div className="relative aspect-[4/3] img-zoom">
             <img
@@ -69,7 +69,7 @@ export function CarCard({ car, index = 0 }: CarCardProps) {
 
             {/* Featured badge */}
             {car.featured && car.status === "available" && (
-              <div className="absolute top-4 left-4 bg-navy-900 text-white px-3 py-1 rounded-full text-sm font-medium">
+              <div className="absolute top-4 left-4 bg-navy-900 dark:bg-white text-white dark:text-navy-900 px-3 py-1 rounded-full text-sm font-medium">
                 Destacado
               </div>
             )}
@@ -86,29 +86,29 @@ export function CarCard({ car, index = 0 }: CarCardProps) {
           {/* Content */}
           <div className="p-6">
             {/* Title */}
-            <h3 className="text-xl font-bold text-navy-900 mb-1 group-hover:text-navy-700 transition-colors">
+            <h3 className="text-xl font-bold text-navy-900 dark:text-white mb-1 group-hover:text-navy-700 dark:group-hover:text-navy-200 transition-colors">
               {car.brand} {car.model}
             </h3>
 
             {/* Year */}
-            <p className="text-navy-500 text-sm mb-4">{car.year}</p>
+            <p className="text-navy-500 dark:text-navy-400 text-sm mb-4">{car.year}</p>
 
             {/* Specs grid */}
             <div className="grid grid-cols-2 gap-3">
-              <div className="flex items-center gap-2 text-navy-600">
-                <Gauge className="w-4 h-4 text-navy-400" />
+              <div className="flex items-center gap-2 text-navy-600 dark:text-navy-300">
+                <Gauge className="w-4 h-4 text-navy-400 dark:text-navy-500" />
                 <span className="text-sm">{formatMileage(car.mileage)}</span>
               </div>
-              <div className="flex items-center gap-2 text-navy-600">
-                <Fuel className="w-4 h-4 text-navy-400" />
+              <div className="flex items-center gap-2 text-navy-600 dark:text-navy-300">
+                <Fuel className="w-4 h-4 text-navy-400 dark:text-navy-500" />
                 <span className="text-sm">{fuelLabels[car.fuelType] || car.fuelType}</span>
               </div>
-              <div className="flex items-center gap-2 text-navy-600">
-                <Calendar className="w-4 h-4 text-navy-400" />
+              <div className="flex items-center gap-2 text-navy-600 dark:text-navy-300">
+                <Calendar className="w-4 h-4 text-navy-400 dark:text-navy-500" />
                 <span className="text-sm">{car.year}</span>
               </div>
-              <div className="flex items-center gap-2 text-navy-600">
-                <Settings className="w-4 h-4 text-navy-400" />
+              <div className="flex items-center gap-2 text-navy-600 dark:text-navy-300">
+                <Settings className="w-4 h-4 text-navy-400 dark:text-navy-500" />
                 <span className="text-sm">
                   {transmissionLabels[car.transmission] || car.transmission}
                 </span>
@@ -116,8 +116,8 @@ export function CarCard({ car, index = 0 }: CarCardProps) {
             </div>
 
             {/* CTA */}
-            <div className="mt-6 pt-4 border-t border-navy-100">
-              <span className="text-navy-900 font-semibold text-sm group-hover:text-navy-700 transition-colors flex items-center justify-between">
+            <div className="mt-6 pt-4 border-t border-navy-100 dark:border-navy-800">
+              <span className="text-navy-900 dark:text-white font-semibold text-sm group-hover:text-navy-700 dark:group-hover:text-navy-200 transition-colors flex items-center justify-between">
                 Ver Detalles
                 <svg
                   className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"

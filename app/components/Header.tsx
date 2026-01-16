@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail, MapPin, Car } from "lucide-react";
 import { cn } from "~/lib/utils";
+import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Inicio" },
@@ -33,7 +34,7 @@ export function Header() {
   return (
     <>
       {/* Top bar */}
-      <div className="bg-navy-900 text-white py-2 hidden md:block">
+      <div className="bg-navy-900 dark:bg-navy-950 text-white py-2 hidden md:block">
         <div className="container-custom flex justify-between items-center text-sm">
           <div className="flex items-center gap-6">
             <a
@@ -63,20 +64,20 @@ export function Header() {
         className={cn(
           "sticky top-0 z-50 transition-all duration-500",
           isScrolled
-            ? "bg-white/95 backdrop-blur-xl shadow-lg shadow-navy-900/5"
-            : "bg-white"
+            ? "bg-white/95 dark:bg-navy-900/95 backdrop-blur-xl shadow-lg shadow-navy-900/5 dark:shadow-navy-950/50"
+            : "bg-white dark:bg-navy-900"
         )}
       >
         <div className="container-custom">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-12 h-12 bg-navy-900 rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                <Car className="w-7 h-7 text-white" />
+              <div className="w-12 h-12 bg-navy-900 dark:bg-white rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <Car className="w-7 h-7 text-white dark:text-navy-900" />
               </div>
               <div>
-                <span className="text-2xl font-bold text-navy-900">AMSA</span>
-                <span className="block text-xs text-navy-500 -mt-1">
+                <span className="text-2xl font-bold text-navy-900 dark:text-white">AMSA</span>
+                <span className="block text-xs text-navy-500 dark:text-navy-300 -mt-1">
                   Autos Seminuevos
                 </span>
               </div>
@@ -91,8 +92,8 @@ export function Header() {
                   className={cn(
                     "px-5 py-2.5 rounded-full font-medium transition-all duration-300",
                     location.pathname === link.href
-                      ? "bg-navy-900 text-white"
-                      : "text-navy-700 hover:bg-navy-100"
+                      ? "bg-navy-900 dark:bg-white text-white dark:text-navy-900"
+                      : "text-navy-700 dark:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800"
                   )}
                 >
                   {link.label}
@@ -100,8 +101,9 @@ export function Header() {
               ))}
             </nav>
 
-            {/* CTA Button */}
+            {/* CTA Button and Theme Toggle */}
             <div className="hidden lg:flex items-center gap-4">
+              <ThemeToggle />
               <Link
                 to="/contacto"
                 className="btn-primary text-sm py-3 px-6"
@@ -110,18 +112,21 @@ export function Header() {
               </Link>
             </div>
 
-            {/* Mobile menu button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl hover:bg-navy-100 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6 text-navy-900" />
-              ) : (
-                <Menu className="w-6 h-6 text-navy-900" />
-              )}
-            </button>
+            {/* Mobile menu button and theme toggle */}
+            <div className="lg:hidden flex items-center gap-2">
+              <ThemeToggle />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 rounded-xl hover:bg-navy-100 dark:hover:bg-navy-800 transition-colors"
+                aria-label="Toggle menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6 text-navy-900 dark:text-white" />
+                ) : (
+                  <Menu className="w-6 h-6 text-navy-900 dark:text-white" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -133,7 +138,7 @@ export function Header() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden bg-white border-t border-navy-100 overflow-hidden"
+              className="lg:hidden bg-white dark:bg-navy-900 border-t border-navy-100 dark:border-navy-800 overflow-hidden"
             >
               <nav className="container-custom py-6 space-y-2">
                 {navLinks.map((link, index) => (
@@ -148,8 +153,8 @@ export function Header() {
                       className={cn(
                         "block px-4 py-3 rounded-xl font-medium transition-all",
                         location.pathname === link.href
-                          ? "bg-navy-900 text-white"
-                          : "text-navy-700 hover:bg-navy-100"
+                          ? "bg-navy-900 dark:bg-white text-white dark:text-navy-900"
+                          : "text-navy-700 dark:text-navy-200 hover:bg-navy-100 dark:hover:bg-navy-800"
                       )}
                     >
                       {link.label}

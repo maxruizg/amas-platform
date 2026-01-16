@@ -124,7 +124,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="bg-navy-900 py-20 relative overflow-hidden">
+      <section className="bg-navy-900 dark:bg-navy-950 py-20 relative overflow-hidden">
         <div className="absolute inset-0 mesh-gradient opacity-30" />
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center">
@@ -139,19 +139,20 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
       </section>
 
       {/* Search and Filters */}
-      <section className="py-8 bg-white border-b border-navy-100 sticky top-20 z-40">
+      <section className="py-8 bg-white dark:bg-navy-900 border-b border-navy-100 dark:border-navy-800 sticky top-20 z-40">
         <div className="container-custom">
           <div className="flex flex-col lg:flex-row gap-4 items-center">
             {/* Search */}
             <form onSubmit={handleSearch} className="flex-1 w-full lg:max-w-md">
               <div className="relative">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400" />
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-navy-400 z-10" />
                 <input
                   type="text"
                   placeholder="Buscar por marca, modelo..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3 rounded-full border border-navy-200 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20 transition-all"
+                  style={{ paddingLeft: '3rem' }}
+                  className="w-full pr-4 py-3 rounded-full border border-navy-200 dark:border-navy-700 bg-white dark:bg-navy-800 dark:text-white dark:placeholder:text-navy-400 focus:border-navy-500 focus:ring-2 focus:ring-navy-500/20 transition-all"
                 />
               </div>
             </form>
@@ -162,14 +163,14 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
               className={cn(
                 "flex items-center gap-2 px-6 py-3 rounded-full font-medium transition-all",
                 showFilters
-                  ? "bg-navy-900 text-white"
-                  : "bg-navy-100 text-navy-700 hover:bg-navy-200"
+                  ? "bg-navy-900 dark:bg-white text-white dark:text-navy-900"
+                  : "bg-navy-100 dark:bg-navy-800 text-navy-700 dark:text-navy-200 hover:bg-navy-200 dark:hover:bg-navy-700"
               )}
             >
               <Filter className="w-5 h-5" />
               Filtros
               {activeFilters.length > 0 && (
-                <span className="w-6 h-6 rounded-full bg-white text-navy-900 text-sm flex items-center justify-center">
+                <span className="w-6 h-6 rounded-full bg-white dark:bg-navy-900 text-navy-900 dark:text-white text-sm flex items-center justify-center">
                   {activeFilters.length}
                 </span>
               )}
@@ -179,7 +180,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
             {activeFilters.length > 0 && (
               <button
                 onClick={clearFilters}
-                className="flex items-center gap-2 px-4 py-2 text-navy-600 hover:text-navy-900 transition-colors"
+                className="flex items-center gap-2 px-4 py-2 text-navy-600 dark:text-navy-300 hover:text-navy-900 dark:hover:text-white transition-colors"
               >
                 <X className="w-4 h-4" />
                 Limpiar
@@ -187,7 +188,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
             )}
 
             {/* Results count */}
-            <p className="text-navy-500">
+            <p className="text-navy-500 dark:text-navy-400">
               {cars.length} {cars.length === 1 ? "resultado" : "resultados"}
             </p>
           </div>
@@ -205,7 +206,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
                 <div className="pt-6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                   {/* Brand */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Marca
                     </label>
                     <select
@@ -224,7 +225,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
 
                   {/* Min Year */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Año desde
                     </label>
                     <select
@@ -245,7 +246,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
 
                   {/* Max Year */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Año hasta
                     </label>
                     <select
@@ -266,7 +267,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
 
                   {/* Fuel Type */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Combustible
                     </label>
                     <select
@@ -285,7 +286,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
 
                   {/* Transmission */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Transmisión
                     </label>
                     <select
@@ -304,7 +305,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
 
                   {/* Max Price */}
                   <div>
-                    <label className="block text-sm font-medium text-navy-700 mb-2">
+                    <label className="block text-sm font-medium text-navy-700 dark:text-navy-200 mb-2">
                       Precio máximo
                     </label>
                     <select
@@ -330,7 +331,7 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
       </section>
 
       {/* Results */}
-      <section className="py-12 bg-navy-50/50">
+      <section className="py-12 bg-navy-50/50 dark:bg-navy-950">
         <div className="container-custom">
           {cars.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -340,13 +341,13 @@ export default function Inventario({ loaderData }: Route.ComponentProps) {
             </div>
           ) : (
             <div className="text-center py-20">
-              <div className="w-24 h-24 bg-navy-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <div className="w-24 h-24 bg-navy-100 dark:bg-navy-800 rounded-full flex items-center justify-center mx-auto mb-6">
                 <Search className="w-10 h-10 text-navy-400" />
               </div>
-              <h3 className="text-2xl font-bold text-navy-900 mb-2">
+              <h3 className="text-2xl font-bold text-navy-900 dark:text-white mb-2">
                 No encontramos resultados
               </h3>
-              <p className="text-navy-600 mb-6">
+              <p className="text-navy-600 dark:text-navy-300 mb-6">
                 Intenta ajustar los filtros o buscar con otros términos
               </p>
               <button
