@@ -1,0 +1,325 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs_eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "routes/home": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/inventario": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/auto.$id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/servicios": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/nosotros": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/contacto": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/login": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/index": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/autos": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/autos.nuevo": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/autos.$id": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/admin/imagenes": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/api/upload": "nodejs_eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "app/root.tsx",
+        "path": "",
+        "config": {}
+      },
+      "routes/home": {
+        "id": "routes/home",
+        "parentId": "root",
+        "file": "app/routes/home.tsx",
+        "index": true,
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/inventario": {
+        "id": "routes/inventario",
+        "parentId": "root",
+        "file": "app/routes/inventario.tsx",
+        "path": "inventario",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/auto.$id": {
+        "id": "routes/auto.$id",
+        "parentId": "root",
+        "file": "app/routes/auto.$id.tsx",
+        "path": "auto/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/servicios": {
+        "id": "routes/servicios",
+        "parentId": "root",
+        "file": "app/routes/servicios.tsx",
+        "path": "servicios",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/nosotros": {
+        "id": "routes/nosotros",
+        "parentId": "root",
+        "file": "app/routes/nosotros.tsx",
+        "path": "nosotros",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/contacto": {
+        "id": "routes/contacto",
+        "parentId": "root",
+        "file": "app/routes/contacto.tsx",
+        "path": "contacto",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/login": {
+        "id": "routes/admin/login",
+        "parentId": "root",
+        "file": "app/routes/admin/login.tsx",
+        "path": "admin/login",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/index": {
+        "id": "routes/admin/index",
+        "parentId": "root",
+        "file": "app/routes/admin/index.tsx",
+        "path": "admin",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/autos": {
+        "id": "routes/admin/autos",
+        "parentId": "root",
+        "file": "app/routes/admin/autos.tsx",
+        "path": "admin/autos",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/autos.nuevo": {
+        "id": "routes/admin/autos.nuevo",
+        "parentId": "root",
+        "file": "app/routes/admin/autos.nuevo.tsx",
+        "path": "admin/autos/nuevo",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/autos.$id": {
+        "id": "routes/admin/autos.$id",
+        "parentId": "root",
+        "file": "app/routes/admin/autos.$id.tsx",
+        "path": "admin/autos/:id",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/admin/imagenes": {
+        "id": "routes/admin/imagenes",
+        "parentId": "root",
+        "file": "app/routes/admin/imagenes.tsx",
+        "path": "admin/imagenes",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/api/upload": {
+        "id": "routes/api/upload",
+        "parentId": "root",
+        "file": "app/routes/api/upload.tsx",
+        "path": "api/upload",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "reactRouterConfig": {
+    "appDirectory": "/Users/maxruizg/Workspace/Personal/Landings/amsa-autos/app",
+    "basename": "/",
+    "buildDirectory": "/Users/maxruizg/Workspace/Personal/Landings/amsa-autos/build",
+    "future": {
+      "unstable_optimizeDeps": false,
+      "unstable_subResourceIntegrity": false,
+      "unstable_trailingSlashAwareDataRequests": false,
+      "v8_middleware": false,
+      "v8_splitRouteModules": false,
+      "v8_viteEnvironmentApi": false
+    },
+    "routes": {
+      "root": {
+        "id": "root",
+        "file": "root.tsx",
+        "path": ""
+      },
+      "routes/home": {
+        "id": "routes/home",
+        "parentId": "root",
+        "file": "routes/home.tsx",
+        "index": true
+      },
+      "routes/inventario": {
+        "id": "routes/inventario",
+        "parentId": "root",
+        "file": "routes/inventario.tsx",
+        "path": "inventario"
+      },
+      "routes/auto.$id": {
+        "id": "routes/auto.$id",
+        "parentId": "root",
+        "file": "routes/auto.$id.tsx",
+        "path": "auto/:id"
+      },
+      "routes/servicios": {
+        "id": "routes/servicios",
+        "parentId": "root",
+        "file": "routes/servicios.tsx",
+        "path": "servicios"
+      },
+      "routes/nosotros": {
+        "id": "routes/nosotros",
+        "parentId": "root",
+        "file": "routes/nosotros.tsx",
+        "path": "nosotros"
+      },
+      "routes/contacto": {
+        "id": "routes/contacto",
+        "parentId": "root",
+        "file": "routes/contacto.tsx",
+        "path": "contacto"
+      },
+      "routes/admin/login": {
+        "id": "routes/admin/login",
+        "parentId": "root",
+        "file": "routes/admin/login.tsx",
+        "path": "admin/login"
+      },
+      "routes/admin/index": {
+        "id": "routes/admin/index",
+        "parentId": "root",
+        "file": "routes/admin/index.tsx",
+        "path": "admin"
+      },
+      "routes/admin/autos": {
+        "id": "routes/admin/autos",
+        "parentId": "root",
+        "file": "routes/admin/autos.tsx",
+        "path": "admin/autos"
+      },
+      "routes/admin/autos.nuevo": {
+        "id": "routes/admin/autos.nuevo",
+        "parentId": "root",
+        "file": "routes/admin/autos.nuevo.tsx",
+        "path": "admin/autos/nuevo"
+      },
+      "routes/admin/autos.$id": {
+        "id": "routes/admin/autos.$id",
+        "parentId": "root",
+        "file": "routes/admin/autos.$id.tsx",
+        "path": "admin/autos/:id"
+      },
+      "routes/admin/imagenes": {
+        "id": "routes/admin/imagenes",
+        "parentId": "root",
+        "file": "routes/admin/imagenes.tsx",
+        "path": "admin/imagenes"
+      },
+      "routes/api/upload": {
+        "id": "routes/api/upload",
+        "parentId": "root",
+        "file": "routes/api/upload.tsx",
+        "path": "api/upload"
+      }
+    },
+    "routeDiscovery": {
+      "mode": "lazy",
+      "manifestPath": "/__manifest"
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true,
+    "allowedActionOrigins": false,
+    "unstable_routeConfig": [
+      {
+        "id": "root",
+        "path": "",
+        "file": "root.tsx",
+        "children": [
+          {
+            "file": "routes/home.tsx",
+            "index": true
+          },
+          {
+            "file": "routes/inventario.tsx",
+            "path": "inventario"
+          },
+          {
+            "file": "routes/auto.$id.tsx",
+            "path": "auto/:id"
+          },
+          {
+            "file": "routes/servicios.tsx",
+            "path": "servicios"
+          },
+          {
+            "file": "routes/nosotros.tsx",
+            "path": "nosotros"
+          },
+          {
+            "file": "routes/contacto.tsx",
+            "path": "contacto"
+          },
+          {
+            "file": "routes/admin/login.tsx",
+            "path": "admin/login"
+          },
+          {
+            "file": "routes/admin/index.tsx",
+            "path": "admin"
+          },
+          {
+            "file": "routes/admin/autos.tsx",
+            "path": "admin/autos"
+          },
+          {
+            "file": "routes/admin/autos.nuevo.tsx",
+            "path": "admin/autos/nuevo"
+          },
+          {
+            "file": "routes/admin/autos.$id.tsx",
+            "path": "admin/autos/:id"
+          },
+          {
+            "file": "routes/admin/imagenes.tsx",
+            "path": "admin/imagenes"
+          },
+          {
+            "file": "routes/api/upload.tsx",
+            "path": "api/upload"
+          }
+        ]
+      }
+    ]
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}

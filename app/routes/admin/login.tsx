@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, redirect, useActionData, useNavigation } from "react-router";
+import { Form, redirect, useNavigation } from "react-router";
 import type { Route } from "./+types/login";
 import { authenticateUser, getOptionalUser } from "~/lib/auth.server";
 import { motion } from "framer-motion";

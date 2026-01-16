@@ -1,4 +1,4 @@
-import { Form, redirect, useActionData, useNavigation, Link } from "react-router";
+import { Form, redirect, useNavigation, Link } from "react-router";
 import type { Route } from "./+types/autos.nuevo";
 import { prisma } from "~/lib/db.server";
 import { requireAuth } from "~/lib/auth.server";

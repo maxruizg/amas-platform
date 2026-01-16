@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Form, useActionData, useNavigation, Link } from "react-router";
+import { Form, useNavigation, Link } from "react-router";
 import type { Route } from "./+types/imagenes";
 import { prisma } from "~/lib/db.server";
 import { requireAuth } from "~/lib/auth.server";
